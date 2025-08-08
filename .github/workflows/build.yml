@@ -14,15 +14,16 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Install LLVM + Clang
-      run: |
-        choco install llvm --version=17.0.6 --installargs 'ADD_CMAKE_TO_PATH=System' -y
-        echo "C:\Program Files\LLVM\bin" >> $GITHUB_PATH
-
     - name: Install MinGW-w64
       run: |
         choco install mingw --version=13.2.0 -y
         echo "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin" >> $GITHUB_PATH
+
+    - name: Verify compilers
+      run: |
+        clang --version
+        clang++ --version
+        windres --version
 
     - name: Configure CMake (Clang + Ninja)
       run: |
