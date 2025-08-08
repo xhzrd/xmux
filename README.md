@@ -45,10 +45,6 @@ ninja
 
 ---
 
-Here’s a clean **Usage Responsibility** section you can drop into your README:
-
----
-
 ## Usage Responsibility
 
 **xmux** is a technical tool intended for legitimate software development, debugging, and experimentation purposes.
