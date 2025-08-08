@@ -1,0 +1,35 @@
+name: Windows Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install LLVM + Clang
+      run: |
+        choco install llvm --version=17.0.6 --installargs 'ADD_CMAKE_TO_PATH=System' -y
+        echo "C:\Program Files\LLVM\bin" >> $GITHUB_PATH
+
+    - name: Install MinGW-w64
+      run: |
+        choco install mingw --version=13.2.0 -y
+        echo "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin" >> $GITHUB_PATH
+
+    - name: Configure CMake (Clang + Ninja)
+      run: |
+        cmake -B build -G Ninja ^
+          -DCMAKE_C_COMPILER=clang ^
+          -DCMAKE_CXX_COMPILER=clang++ ^
+          -DCMAKE_RC_COMPILER=windres
+
+    - name: Build
+      run: cmake --build build --config Release
