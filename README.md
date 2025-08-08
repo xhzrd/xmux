@@ -5,6 +5,13 @@ Think of it as *window inception*, running graphical apps *inside* terminal wind
 
 It's **not** MPV-exclusive, MPV was just a convenient test case for me. You can embed literally any HWND-based GUI app.
 
+## Demo
+
+<video width="640" height="360" controls>
+  <source src="./demos/xmux-mpv-demo_github.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
 ---
 
 ## Features
