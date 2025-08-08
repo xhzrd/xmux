@@ -22,6 +22,10 @@
 #include <thread>
 #include <windows.h>
 
+#include <string>
+#include <vector>
+#include <unordered_map>
+
 class xmux {
 	public:
 		explicit xmux(int parentPID, const std::string command);
