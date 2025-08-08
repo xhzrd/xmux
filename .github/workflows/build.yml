@@ -25,12 +25,8 @@ jobs:
         clang++ --version
         windres --version
 
-    - name: Configure CMake (Clang + Ninja)
-      run: |
-        cmake -B build -G Ninja ^
-          -DCMAKE_C_COMPILER=clang ^
-          -DCMAKE_CXX_COMPILER=clang++ ^
-          -DCMAKE_RC_COMPILER=windres
+    - name: Configure CMake
+      run: cmake -B build -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
 
     - name: Build
       run: cmake --build build --config Release
